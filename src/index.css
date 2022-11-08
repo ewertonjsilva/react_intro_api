@@ -1,13 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+   RESET
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* GLOBAL */
+html {
+  scroll-behavior: smooth;
+  /* A cada 1rem será considerado 10px */
+  font-size: 62.5%;
+}
+
+body {
+  background: #f0f0f5;
+  -webkit-font-smoothing: antialiased; 
+  /* max-width: 1168px; largura útil + 20 px esq e 20px dir */
+  margin: 0 auto;
+  background-color: #FAFAFA;
+  /* padding: 0 2rem 2rem 2rem; */
+}
+
+body, input, button, textarea {
+  font: 1.6 4rem Roboto, sans-serif;
+} 
+
+h1 {
+  font-size: 6.1rem; 
+  margin: 1rem; 
+  font-weight: bold;
+} 
+
+h2 {
+  font-size: 4.9rem;
+  margin: 1rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 3.9rem;
+  margin: 1rem;
+  font-weight: bold;
+}
+
+/* PRODUTOS */
+.produtos {
+  margin: 1rem auto;
+  display: flex; 
+  justify-content: center; 
+  max-width: 1128px; 
+  border-radius: 2rem; 
+  flex-wrap: wrap;
+}
+
+.produtos .cardProd {
+  width: 30%; 
+  height: 25rem;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  border: 0.4rem solid #B71C1C; 
+  border-radius: 2rem; 
+  overflow: hidden; 
+  background-color: #B71C1C; 
+  margin: 1rem 1rem;
+}
+
+.produtos .cardProd img {
+  width: 100%; 
+  height: 80%;
+} 
+
+.produtos .cardProd span {
+  background-color: #FAFAFA; 
+  width: 100%; 
+  text-align: center;
+  font-size: 1.6rem; 
+  padding: 0.5rem;
+} 
+
+.produtos .cardProd .descricao {
+  font-weight: bold;
+}
+
+/* Rodapé */
+.rodape {
+  margin: 1rem auto;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  max-width: 1128px; 
+  border-radius: 2rem; 
+  width: 96%;
+}
+
+.rodape p {
+  text-align: center; 
+  font-size: 1.4rem; 
+  margin-top: 0.5rem; 
+  color: #B71C1C;
+}
+
+.rodape .social { 
+  /* margin: 0 auto; */
+  color: #FAFAFA;
+  background-color: #B71C1C;  
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  max-width: 1128px; 
+  border-radius: 2rem;
+}
+
+.rodape .social img {
+  width: 4rem; 
+  margin: 2rem 6rem;
+}
+
+@media screen and (max-width: 1000px) {
+  html {
+      font-size: 58%;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  html {
+      font-size: 48%;
+  }
 }
