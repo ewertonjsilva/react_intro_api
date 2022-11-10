@@ -1,12 +1,29 @@
+import { MdLunchDining, MdLocalBar, MdDining, MdIcecream, MdFastfood } from "react-icons/md";
+
+import Cabecalho from "../../header/cabecalho";
+import Rodape from '../../footer/rodape'; 
+
 import './App.css';
+// import './Slider';
 
-import promo1 from '../../../imagens/promo1.png';
+import promo1 from '../../../imagens/promo1.png'; 
+import promo2 from '../../../imagens/promo2.png';
+import promo3 from '../../../imagens/promo3.png';
+import promo4 from '../../../imagens/promo4.png';
 
-import local from '../../../imagens/local.jpg';
+import local from '../../../imagens/local.jpg'; 
+
+import prod1 from '../../../imagens/temp/hamburger-bacon.jpg';
+import prod2 from '../../../imagens/temp/hamburger-batata.jpg';
+import prod3 from '../../../imagens/temp/lanche1.jpg';
+import prod4 from '../../../imagens/temp/suco2.jpg';
+import prod5 from '../../../imagens/temp/suco-laranja.jpg';
+import prod6 from '../../../imagens/temp/sorvete.jpg';
 
 function App() {
   return (
     <div className="App">
+        <Cabecalho />
         <div className="slider">
             <div className="slides">
 
@@ -19,13 +36,13 @@ function App() {
                     <img src={promo1} alt="Promoção 1" />
                 </div>
                 <div className="slide">
-                    <img src="./imagens/promo2.png" alt="Promoção 2" />
+                    <img src={promo2} alt="Promoção 2" />
                 </div>
                 <div className="slide">
-                    <img src="./imagens/promo3.png" alt="Promoção 3" />
+                    <img src={promo3} alt="Promoção 3" />
                 </div>
                 <div className="slide">
-                    <img src="./imagens/promo4.png" alt="Promoção 4" />
+                    <img src={promo4} alt="Promoção 4" />
                 </div>
 
                 <div className="navigation-auto">
@@ -53,61 +70,51 @@ function App() {
 
         <div className="tipos">
             {/* <!-- Tipos de produto --> */}
-            <span className="material-icons tipo">
-                lunch_dining
-            </span>
-            <span className="material-icons tipo">
-                local_bar
-            </span>            
-            <span className="material-icons tipo">
-                kebab_dining
-            </span>
-            <span className="material-icons tipo">
-                icecream
-            </span>
-            <span className="material-icons tipo">
-                fastfood
-            </span>
+
+            <MdLunchDining className="tipo" />
+            <MdLocalBar className="tipo" />
+            <MdDining className="tipo" />
+            <MdIcecream className="tipo" />
+            <MdFastfood className="tipo" />
+            
         </div>
 
         <div className="produtos">
             {/* <!-- Alguns produtos --> */}
             <div className="cardProd">
-                <img src="./imagens/temp/hamburger-bacon.jpg" alt="" />
+                <img src={prod1} alt="" />
                 <span className="descricao">Lanche</span>
                 <span>R$ 0,00</span>
             </div>
             <div className="cardProd">
-                <img src="./imagens/temp/hamburger-batata.jpg" alt="" />
+                <img src={prod2} alt="" />
                 <span className="descricao">Lanche</span>
                 <span>R$ 0,00</span>
             </div>
             <div className="cardProd">
-                <img src="./imagens/temp/lanche1.jpg" alt="" />
+                <img src={prod3} alt="" />
                 <span className="descricao">Lanche</span>
                 <span>R$ 0,00</span>
             </div>
             <div className="cardProd">
-                <img src="./imagens/temp/suco2.jpg" alt="" />
+                <img src={prod4} alt="" />
                 <span className="descricao">Lanche</span>
                 <span>R$ 0,00</span>
             </div>
             <div className="cardProd">
-                <img src="./imagens/temp/suco-laranja.jpg" alt="" />
+                <img src={prod5} alt="" />
                 <span className="descricao">Lanche</span>
                 <span>R$ 0,00</span>
             </div>
             <div className="cardProd">
-                <img src="./imagens/temp/sorvete.jpg" alt="" />
+                <img src={prod6} alt="" />
                 <span className="descricao">Lanche</span>
                 <span>R$ 0,00</span>
             </div>
         </div>
 
+        <Rodape />
 
-
-        <script src='scripts/nav.js'></script>
-        <script src='scripts/home.js'></script>
     </div>
   );
 }

@@ -1,0 +1,33 @@
+/* Rodapé */
+.rodape {
+    margin: 1rem auto;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    max-width: 1128px; 
+    border-radius: 2rem; 
+    width: 96%;
+  }
+  
+  .rodape p {
+    text-align: center; 
+    font-size: 1.4rem; 
+    margin-top: 0.5rem; 
+    color: #B71C1C;
+  }
+  
+  .rodape .social { 
+    /* margin: 0 auto; */
+    color: #FAFAFA;
+    background-color: #B71C1C;  
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    max-width: 1128px; 
+    border-radius: 2rem;
+  }
+  
+  .rodape .social img {
+    width: 4rem; 
+    margin: 2rem 6rem;
+  }
