@@ -1,10 +1,12 @@
+import { Carousel } from 'react-responsive-carousel';
+
 import { MdLunchDining, MdLocalBar, MdDining, MdIcecream, MdFastfood } from "react-icons/md";
 
 import Cabecalho from "../../header/cabecalho";
 import Rodape from '../../footer/rodape'; 
 
 import './App.css';
-// import './Slider';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import promo1 from '../../../imagens/promo1.png'; 
 import promo2 from '../../../imagens/promo2.png';
@@ -24,43 +26,7 @@ function App() {
   return (
     <div className="App">
         <Cabecalho />
-        <div className="slider">
-            <div className="slides">
-
-                <input type="radio" name="radio-btn" id="radio1" />
-                <input type="radio" name="radio-btn" id="radio2" />
-                <input type="radio" name="radio-btn" id="radio3" />
-                <input type="radio" name="radio-btn" id="radio4" />
-
-                <div className="slide primeira">
-                    <img src={promo1} alt="Promoção 1" />
-                </div>
-                <div className="slide">
-                    <img src={promo2} alt="Promoção 2" />
-                </div>
-                <div className="slide">
-                    <img src={promo3} alt="Promoção 3" />
-                </div>
-                <div className="slide">
-                    <img src={promo4} alt="Promoção 4" />
-                </div>
-
-                <div className="navigation-auto">
-                    <div className="auto-btn1"></div>
-                    <div className="auto-btn2"></div>
-                    <div className="auto-btn3"></div>
-                    <div className="auto-btn4"></div>
-                </div>
-
-            </div>
-
-            <div className="manual-navigation">
-                <label for="radio1" className="manual-btn"></label>
-                <label for="radio2" className="manual-btn"></label>
-                <label for="radio3" className="manual-btn"></label>
-                <label for="radio4" className="manual-btn"></label>                
-            </div>
-        </div>
+        <Slider />
 
         <main className="principal">
             {/* Info local */}
@@ -117,6 +83,25 @@ function App() {
 
     </div>
   );
+}
+/* https://www.youtube.com/watch?v=Kyk_lPWCM3s */
+function Slider() {
+    return(
+        <Carousel className="slider">
+            <div>
+                <img src={promo1} alt="Promoção 1" />
+            </div>
+            <div>
+                <img src={promo2} alt="Promoção 2" />
+            </div>
+            <div>
+                <img src={promo3} alt="Promoção 3" />
+            </div>
+            <div>
+                <img src={promo4} alt="Promoção 4" />
+            </div>            
+        </Carousel>
+    )
 }
 
 export default App;
