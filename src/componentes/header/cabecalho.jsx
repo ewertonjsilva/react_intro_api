@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MdFastfood, MdMenu } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 import './cabecalho.css'; 
 
@@ -25,9 +26,9 @@ function Cabecalho() {
                         <label for="" id="titulo">BomBurguer</label>
                     </div>                      
                     <div className="menuGrande">
-                        <a href="#" className="active">Home</a>                  
-                        <a href="./paginas/produtos.html">Produtos</a>
-                        <a href="./paginas/cadUsuario.html">Cadastrar</a>
+                        <Link to='/' className="active">Home</Link>                  
+                        <Link to='/produtos'>Produtos</Link>
+                        <Link to='/cadusuarios'>Cadastrar</Link>
                         <a href="./paginas/contato.html">Contato</a>
                         <a href="./paginas/login.html">Login</a>
                     </div>

@@ -1,0 +1,91 @@
+/* MENU PESQUISA */
+.menuPesquisa {
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 1128px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    background-color: #B71C1C; 
+    border-radius: 2rem;
+} 
+
+.menuPesquisa .opPesquisa {
+    margin: 1rem;
+    width: 40%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+} 
+
+.menuPesquisa .opPesquisa select {     
+    padding: 0 2rem;
+    width: 100%;
+    font-size: 2rem; 
+    height: 4.5rem;
+    border-radius: 2rem;
+    border: solid 0.5rem #B71C1C; 
+    color: #B71C1C; 
+    text-align: center; 
+} 
+
+.menuPesquisa .opPesquisa select option:focus {     
+    color: #FAFAFA; 
+    background-color: #B71C1C;
+} 
+
+.menuPesquisa .opPesquisa select:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0; 
+} 
+
+.menuPesquisa .valorPesquisa {
+    margin: 1rem;
+    width: 40%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #FAFAFA; 
+    border: solid 0.5rem #FAFAFA; 
+    border-radius: 2rem; 
+    color: #B71C1C;
+}
+
+.menuPesquisa .valorPesquisa input {
+    width: 100%; 
+    font-size: 2rem; 
+    margin: 0; 
+    border: none; 
+    padding: 0 1rem; 
+    background-color: #FAFAFA;
+}
+
+.menuPesquisa .valorPesquisa input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0; 
+}
+
+.menuPesquisa .valorPesquisa .icon {
+    font-size: 3rem;
+    margin-right: 1rem; 
+    cursor: pointer;
+} 
+
+.paginacao {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    /* border: solid 0.5rem #B71C1C; */
+    font-size: 1.6rem; 
+    color: #7F0000;
+    margin-top: 1rem;
+} 
+
+.paginacao .pags {
+    cursor: pointer;
+}
+
+.paginacao p {
+    margin: 0 1rem;
+}
+
