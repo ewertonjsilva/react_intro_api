@@ -8,7 +8,14 @@
   /* padding: 0 2rem 0 2rem;  */
 }
 
+.carousel .thumb {
+  /* display: none; */
+  height: 5rem;
+}
  
+.carousel {
+  text-align: center;
+}
 
 /* MAIN */
 .principal {

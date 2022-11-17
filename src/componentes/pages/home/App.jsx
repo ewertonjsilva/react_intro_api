@@ -87,7 +87,7 @@ function App() {
 /* https://www.youtube.com/watch?v=Kyk_lPWCM3s */
 function Slider() {
     return(
-        <Carousel className="slider">
+        <Carousel className="slider" autoPlay={true} infiniteLoop={true} interval={5000} showThumbs={false} showStatus={false}>
             <div>
                 <img src={promo1} alt="Promoção 1" />
             </div>
