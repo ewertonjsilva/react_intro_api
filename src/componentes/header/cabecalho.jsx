@@ -8,7 +8,7 @@ function Cabecalho() {
 
     const [mobile, setMobile] = useState(false);
 
-    function ativaMenu(e) {
+    function ativaMenu() {
         if (mobile === false) {
             setMobile(true);
         } else {

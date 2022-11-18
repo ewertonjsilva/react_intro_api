@@ -9,7 +9,7 @@ import Home from '../pages/home/App';
 import Produtos from '../pages/produtos/produtos';
 import CadUsuarios from '../pages/usuario/cadUsuario';
 
- function Rotas() {
+function Rotas() {
     return(
         <Router>
             <Routes>
@@ -19,6 +19,6 @@ import CadUsuarios from '../pages/usuario/cadUsuario';
             </Routes>            
         </Router>
     );
- }
+}
 
  export default Rotas;

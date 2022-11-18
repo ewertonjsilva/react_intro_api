@@ -1,220 +1,202 @@
+import React, { useState } from 'react';
+import { MdCheckCircle, MdError, MdPersonAddAlt } from "react-icons/md";
+
+import IconCad from '../../../imagens/icones/cadastrar.svg';
+
 import './cadUsuario.css';
 
-function CadUsuario() {
+function CadUsuario() { 
+
+    const [usu_nome, setUsu_nome] = useState(''); 
+    const [usu_email, setUsu_email] = useState(''); 
+    const [cid_id, setCid_id] = useState(0); 
+    const [end_logradouro, setEnd_logradouro] = useState(''); 
+    const [end_num, setEnd_Num] = useState(''); 
+    const [end_bairro, setEnd_Bairro] = useState(''); 
+    const [end_complemento, setEnd_Complemento] = useState(''); 
+    const [cli_cel, setCli_cel] = useState(''); 
+    const [usu_senha, setUsu_senha] = useState(''); 
+    const [usu_tipo, setUsu_tipo] = useState(2); // somento cliente pelo cadastrar do site
+
+    // não registra no banco
+    const [uf, setUf] = useState('');
+    const [confSenha, setConfSenha] = useState('');
+
     return(
-        <div class="container">
+        <div className="container">
             <div>
                 <h2>Criar uma conta</h2>
             </div>
-            <form id="form" class="form">
-                <div class="form-control" id="valNome">
+            <form id="form" className="form">
+                <div className="form-control" id="valNome">
                     <label for="username">Nome de usuário</label>
-                    <div class="divInput">
+                    <div className="divInput">
                         <input
                             type="text"
                             id="username"
-                            placeholder="Digite seu nome de usuário..."
+                            placeholder="Digite seu nome de usuário..." 
+                            onChange={v => setUsu_nome(v.target.value)} 
+                            value={usu_nome}
                         />
-                        {/* <i class="fas fa-exclamation-circle"></i> */}
-                        <span class="material-icons sucesso">
-                            check_circle
-                        </span>
-                        <span class="material-icons erro">
-                            error
-                        </span>
-                        {/* <i class="fas fa-check-circle"></i> */}
+                        <MdCheckCircle className="sucesso" />
+                        <MdError className="erro"/>
                     </div>                    
                     <small id="nome">Insira o nome completo do usuário</small>
                 </div>
         
-                <div class="form-control" id="valEmail">
+                <div className="form-control" id="valEmail">
                   <label for="email">Email</label>
-                  <div class="divInput">
-                    <input type="text" id="email" placeholder="Digite seu email.." />
-                    <span class="material-icons sucesso">
-                        check_circle
-                    </span>
-                    <span class="material-icons erro">
-                        error
-                    </span>
+                  <div className="divInput">
+                    <input 
+                        type="text" 
+                        id="email" 
+                        placeholder="Digite seu email.." 
+                        onChange={v => setUsu_email(v.target.value)} 
+                        value={usu_email}
+                    />
+                    <MdCheckCircle className="sucesso" />
+                    <MdError className="erro"/>
                   </div>                  
                   <small>Insira o e-mail corretamente!</small>
                 </div>
         
-                <div class="doisItens">
-                    <div class="form-control" id="valEstado">
+                <div className="doisItens">
+                    <div className="form-control" id="valEstado">
                         <label for="estado">Estado</label>
-                        <div class="divInput">
-                          <select name="selUf" id="estado">
-                            <option selected disabled value="0">Sel. estado</option>
-                            <option value="1">SP</option>
-                            <option value="2">RJ</option>
-                            <option value="3">PR</option>
-                          </select>
-                          <span class="material-icons sucesso">
-                              check_circle
-                          </span>
-                          <span class="material-icons erro">
-                              error
-                          </span>
+                        <div className="divInput">
+                            <select name="selUf" id="estado">
+                                <option selected disabled onChange={e => setUf(e.target.value)} value={uf} >Sel. estado</option>
+                                <option value="1">SP</option>
+                                <option value="2">RJ</option>
+                                <option value="3">PR</option>
+                            </select>
+                            <MdCheckCircle className="sucesso" />
+                            <MdError className="erro"/>
                         </div>                  
                         <small>Campo obrigatório!</small>
                       </div>
 
-                      <div class="form-control" id="valCidade">
+                      <div className="form-control" id="valCidade">
                         <label for="cidade">Cidade</label>
-                        <div class="divInput">
+                        <div className="divInput">
                             <select name="selCidade" id="cidade">
                                 <option selected disabled value="0">Selecione a cidade</option>
                                 <option value="1">Tupã</option>
                                 <option value="2">Parapuã</option>
                                 <option value="3">Marília</option>
                             </select>
-                          <span class="material-icons sucesso">
-                              check_circle
-                          </span>
-                          <span class="material-icons erro">
-                              error
-                          </span>
+                            <MdCheckCircle className="sucesso" />
+                            <MdError className="erro"/>
                         </div>                  
                         <small>Selecione a cidade!</small>
                       </div>
                 </div>
 
-                <div class="form-control" id="valLog">
+                <div className="form-control" id="valLog">
                     <label for="logradouro">Logradouro</label>
-                    <div class="divInput">
+                    <div className="divInput">
                         <input
                             type="text"
                             id="logradouro"
                             placeholder="Digite o endereço..."
                         />
-                        {/* <i class="fas fa-exclamation-circle"></i> */}
-                        <span class="material-icons sucesso">
-                            check_circle
-                        </span>
-                        <span class="material-icons erro">
-                            error
-                        </span>
-                        {/* <i class="fas fa-check-circle"></i> */}
+                        <MdCheckCircle className="sucesso" />
+                        <MdError className="erro"/>
                     </div>                    
                     <small>Insira os dados referente ao endereço</small>
                 </div>
 
-                <div class="doisItens">
-                    <div class="form-control" id="valNum">
+                <div className="doisItens">
+                    <div className="form-control" id="valNum">
                         <label for="num">Número</label>
-                        <div class="divInput">
+                        <div className="divInput">
                             <input
                                 type="text"
                                 id="num"
                                 placeholder="nº do endereço"
                             />
-                          <span class="material-icons sucesso">
-                              check_circle
-                          </span>
-                          <span class="material-icons erro">
-                              error
-                          </span>
+                            <MdCheckCircle className="sucesso" />
+                            <MdError className="erro"/>
                         </div>                  
                         <small>Campo obrigatório!</small>
                       </div>
 
-                      <div class="form-control" id="valBairro">
+                      <div className="form-control" id="valBairro">
                         <label for="bairro">Bairro</label>
-                        <div class="divInput">
+                        <div className="divInput">
                             <input
                                 type="text"
                                 id="bairro"
                                 placeholder="Insira o nome do bairro"
                             />
-                          <span class="material-icons sucesso">
-                              check_circle
-                          </span>
-                          <span class="material-icons erro">
-                              error
-                          </span>
+                            <MdCheckCircle className="sucesso" />
+                            <MdError className="erro"/>
                         </div>                  
                         <small>Selecione a cidade!</small>
                       </div>
                 </div>
 
-                <div class="doisItens">
-                    <div class="form-control" id="valComp">
+                <div className="doisItens">
+                    <div className="form-control" id="valComp">
                         <label for="comp">Complemento</label>
-                        <div class="divInput">
+                        <div className="divInput">
                             <input
                                 type="text"
                                 id="comp"
                                 placeholder="Complemento do endereço"
                             />
-                          <span class="material-icons sucesso">
-                              check_circle
-                          </span>
-                          <span class="material-icons erro">
-                              error
-                          </span>
+                            <MdCheckCircle className="sucesso" />
+                            <MdError className="erro"/>
                         </div>                  
                         <small>-</small>
                       </div>
 
-                      <div class="form-control" id="valCelular">
+                      <div className="form-control" id="valCelular">
                         <label for="celular">nº celular</label>
-                        <div class="divInput">
+                        <div className="divInput">
                             <input
                                 type="text"
                                 id="celular"
                                 placeholder="Insira o nº do celular"
                             />
-                          <span class="material-icons sucesso">
-                              check_circle
-                          </span>
-                          <span class="material-icons erro">
-                              error
-                          </span>
+                            <MdCheckCircle className="sucesso" />
+                            <MdError className="erro"/>
                         </div>                  
                         <small>O nº do celular é obrigatório</small>
                       </div>
                 </div>
 
-                <div class="form-control" id="validaSn1">
+                <div className="form-control" id="validaSn1">
                   <label for="password">Senha</label>
-                  <div class="divInput">
+                  <div className="divInput">
                     <input
                         type="password"
                         id="password"
                         placeholder="Digite sua senha..."
                     />
-                    <span class="material-icons sucesso">
-                        check_circle
-                    </span>
-                    <span class="material-icons erro">
-                        error
-                    </span>
+                    <MdCheckCircle className="sucesso" />
+                    <MdError className="erro"/>
                   </div>                  
                   <small>A senha precisa ter no mínimo 7 caracteres.</small>
                 </div>
         
-                <div class="form-control" id="validaSn2">
+                <div className="form-control" id="validaSn2">
                   <label for="password-confirmation">Confirmação de senha</label>
-                  <div class="divInput">
+                  <div className="divInput">
                     <input
                         type="password"
                         id="password-confirmation"
                         placeholder="Digite sua senha novamente..."
                     />
-                    <span class="material-icons sucesso">
-                        check_circle
-                    </span>
-                    <span class="material-icons erro">
-                        error
-                    </span>
+                    <MdCheckCircle className="sucesso" />
+                    <MdError className="erro"/>
                   </div>                  
                   <small>Confirmação obrigatória, as senhas inseridas devem ser iguais!</small>
                 </div>
         
                 <button type="submit">
-                    <img src="../imagens/icones/cadastrar.svg" alt="cadastrar" />
+                    <img src={IconCad} alt="cadastrar" />
+                    {/* <MdPersonAddAlt /> */}
                     Enviar
                 </button>
             </form>
