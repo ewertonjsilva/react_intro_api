@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { MdCheckCircle, MdError } from "react-icons/md";
 
+import Cabecalho from "../../header/cabecalho"; 
+import Rodape from "../../footer/rodape";
+
 import IconCad from '../../../imagens/icones/cadastrar.svg';
 
 import './cadUsuario.css';
@@ -169,198 +172,204 @@ function CadUsuario() {
     }
 
     return(
-        <div className="container">
-            <div>
-                <h2>Criar uma conta</h2>
-            </div>
-            <form id="form" className="form" onSubmit={handleSubmit}>
-                <div className={valNome} id="valNome">
-                    <label for="username">Nome de usuário</label>
-                    <div className="divInput">
-                        <input
-                            type="text"
-                            id="username"
-                            placeholder="Digite seu nome de usuário..." 
-                            onChange={v => setUsu_nome(v.target.value)} 
-                            value={usu_nome}
-                        />
-                        <MdCheckCircle className="sucesso" />
-                        <MdError className="erro" />
-                    </div>                    
-                    <small id="nome">{errNome}</small>
-                </div>
-        
-                <div className={valEmail} id="valEmail">
-                  <label for="email">Email</label>
-                  <div className="divInput">
-                    <input 
-                        type="text" 
-                        id="email" 
-                        placeholder="Digite seu email.." 
-                        onChange={v => setUsu_email(v.target.value)} 
-                        value={usu_email}
-                    />
-                    <MdCheckCircle className="sucesso" />
-                    <MdError className="erro"/>
-                  </div>                  
-                  <small>{errEmail}</small>
-                </div>
-        
-                <div className="doisItens">
-                    <div className={valUf} id="valEstado">
-                        <label for="estado">Estado</label>
-                        <div className="divInput">
-                            <select name="selUf" id="estado" onChange={e => setUf(e.target.value)} value={uf}>
-                                <option selected disabled value="">Sel. estado</option>
-                                <option value="SP">SP</option>
-                                <option value="RJ">RJ</option>
-                                <option value="PR">PR</option>
-                            </select>
-                            <MdCheckCircle className="sucesso" />
-                            <MdError className="erro"/>
-                        </div>                  
-                        <small>Campo obrigatório!</small>
-                      </div>
+        <>
+            <Cabecalho /> 
 
-                      <div className={valCidade} id="valCidade">
-                        <label for="cidade">Cidade</label>
-                        <div className="divInput">
-                            <select name="selCidade" id="cidade" onChange={e => setCid_id(e.target.value)} value={cid_id}>
-                                <option selected disabled value="0" >Selecione a cidade</option>
-                                <option value="1">Tupã</option>
-                                <option value="2">Parapuã</option>
-                                <option value="3">Marília</option>
-                            </select>
-                            <MdCheckCircle className="sucesso" />
-                            <MdError className="erro"/>
-                        </div>                  
-                        <small>Selecione a cidade!</small>
-                      </div>
+            <div className="container">            
+                <div>
+                    <h2>Criar uma conta</h2>
                 </div>
-
-                <div className={valLogradouro} id="valLog">
-                    <label for="logradouro">Logradouro</label>
+                <form id="form" className="form" onSubmit={handleSubmit}>
+                    <div className={valNome} id="valNome">
+                        <label for="username">Nome de usuário</label>
+                        <div className="divInput">
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="Digite seu nome de usuário..." 
+                                onChange={v => setUsu_nome(v.target.value)} 
+                                value={usu_nome}
+                            />
+                            <MdCheckCircle className="sucesso" />
+                            <MdError className="erro" />
+                        </div>                    
+                        <small id="nome">{errNome}</small>
+                    </div>
+            
+                    <div className={valEmail} id="valEmail">
+                    <label for="email">Email</label>
                     <div className="divInput">
-                        <input
-                            type="text"
-                            id="logradouro"
-                            placeholder="Digite o endereço..." 
-                            onChange={v => setEnd_logradouro(v.target.value)} 
-                            value={end_logradouro}
+                        <input 
+                            type="text" 
+                            id="email" 
+                            placeholder="Digite seu email.." 
+                            onChange={v => setUsu_email(v.target.value)} 
+                            value={usu_email}
                         />
                         <MdCheckCircle className="sucesso" />
                         <MdError className="erro"/>
-                    </div>                    
-                    <small>{errLogradouro}</small>
-                </div>
+                    </div>                  
+                    <small>{errEmail}</small>
+                    </div>
+            
+                    <div className="doisItens">
+                        <div className={valUf} id="valEstado">
+                            <label for="estado">Estado</label>
+                            <div className="divInput">
+                                <select name="selUf" id="estado" onChange={e => setUf(e.target.value)} value={uf}>
+                                    <option selected disabled value="">Sel. estado</option>
+                                    <option value="SP">SP</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="PR">PR</option>
+                                </select>
+                                <MdCheckCircle className="sucesso" />
+                                <MdError className="erro"/>
+                            </div>                  
+                            <small>Campo obrigatório!</small>
+                        </div>
 
-                <div className="doisItens">
-                    <div className={valNum} id="valNum">
-                        <label for="num">Número</label>
+                        <div className={valCidade} id="valCidade">
+                            <label for="cidade">Cidade</label>
+                            <div className="divInput">
+                                <select name="selCidade" id="cidade" onChange={e => setCid_id(e.target.value)} value={cid_id}>
+                                    <option selected disabled value="0" >Selecione a cidade</option>
+                                    <option value="1">Tupã</option>
+                                    <option value="2">Parapuã</option>
+                                    <option value="3">Marília</option>
+                                </select>
+                                <MdCheckCircle className="sucesso" />
+                                <MdError className="erro"/>
+                            </div>                  
+                            <small>Selecione a cidade!</small>
+                        </div>
+                    </div>
+
+                    <div className={valLogradouro} id="valLog">
+                        <label for="logradouro">Logradouro</label>
                         <div className="divInput">
                             <input
                                 type="text"
-                                id="num"
-                                placeholder="nº do endereço" 
-                                onChange={v => setEnd_Num(v.target.value)} 
-                                value={end_num}
+                                id="logradouro"
+                                placeholder="Digite o endereço..." 
+                                onChange={v => setEnd_logradouro(v.target.value)} 
+                                value={end_logradouro}
                             />
                             <MdCheckCircle className="sucesso" />
                             <MdError className="erro"/>
-                        </div>                  
-                        <small>Campo obrigatório!</small>
-                      </div>
+                        </div>                    
+                        <small>{errLogradouro}</small>
+                    </div>
 
-                      <div className={valBairro} id="valBairro">
-                        <label for="bairro">Bairro</label>
-                        <div className="divInput">
-                            <input
-                                type="text"
-                                id="bairro"
-                                placeholder="Insira o nome do bairro" 
-                                onChange={v => setEnd_Bairro(v.target.value)} 
-                                value={end_bairro}
-                            />
-                            <MdCheckCircle className="sucesso" />
-                            <MdError className="erro"/>
-                        </div>                  
-                        <small>{errBairro}</small>
-                      </div>
-                </div>
+                    <div className="doisItens">
+                        <div className={valNum} id="valNum">
+                            <label for="num">Número</label>
+                            <div className="divInput">
+                                <input
+                                    type="text"
+                                    id="num"
+                                    placeholder="nº do endereço" 
+                                    onChange={v => setEnd_Num(v.target.value)} 
+                                    value={end_num}
+                                />
+                                <MdCheckCircle className="sucesso" />
+                                <MdError className="erro"/>
+                            </div>                  
+                            <small>Campo obrigatório!</small>
+                        </div>
 
-                <div className="doisItens">
-                    <div className="form-control" id="valComp">
-                        <label for="comp">Complemento</label>
-                        <div className="divInput">
-                            <input
-                                type="text"
-                                id="comp"
-                                placeholder="Complemento do endereço" 
-                                onChange={v => setEnd_Complemento(v.target.value)} 
-                                value={end_complemento}
-                            />
-                            <MdCheckCircle className="sucesso" />
-                            <MdError className="erro"/>
-                        </div>                  
-                        <small>-</small>
-                      </div>
+                        <div className={valBairro} id="valBairro">
+                            <label for="bairro">Bairro</label>
+                            <div className="divInput">
+                                <input
+                                    type="text"
+                                    id="bairro"
+                                    placeholder="Insira o nome do bairro" 
+                                    onChange={v => setEnd_Bairro(v.target.value)} 
+                                    value={end_bairro}
+                                />
+                                <MdCheckCircle className="sucesso" />
+                                <MdError className="erro"/>
+                            </div>                  
+                            <small>{errBairro}</small>
+                        </div>
+                    </div>
 
-                      <div className={valCel} id="valCelular">
-                        <label for="celular">nº celular</label>
-                        <div className="divInput">
-                            <input
-                                type="text"
-                                id="celular"
-                                placeholder="Insira o nº do celular" 
-                                onChange={v => setCli_cel(v.target.value)} 
-                                value={cli_cel}
-                            />
-                            <MdCheckCircle className="sucesso" />
-                            <MdError className="erro"/>
-                        </div>                  
-                        <small>{errCel}</small>
-                      </div>
-                </div>
+                    <div className="doisItens">
+                        <div className="form-control" id="valComp">
+                            <label for="comp">Complemento</label>
+                            <div className="divInput">
+                                <input
+                                    type="text"
+                                    id="comp"
+                                    placeholder="Complemento do endereço" 
+                                    onChange={v => setEnd_Complemento(v.target.value)} 
+                                    value={end_complemento}
+                                />
+                                <MdCheckCircle className="sucesso" />
+                                <MdError className="erro"/>
+                            </div>                  
+                            <small>-</small>
+                        </div>
 
-                <div className={valSenha} id="validaSn1">
-                  <label for="password">Senha</label>
-                  <div className="divInput">
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Digite sua senha..." 
-                        onChange={v => setUsu_senha(v.target.value)} 
-                        value={usu_senha}
-                    />
-                    <MdCheckCircle className="sucesso" />
-                    <MdError className="erro"/>
-                  </div>                  
-                  <small>{errSenha}</small>
-                </div>
-        
-                <div className={valConfSenha} id="validaSn2">
-                  <label for="password-confirmation">Confirmação de senha</label>
-                  <div className="divInput">
-                    <input
-                        type="password"
-                        id="password-confirmation"
-                        placeholder="Digite sua senha novamente..." 
-                        onChange={v => setConfSenha(v.target.value)} 
-                        value={confSenha}
-                    />
-                    <MdCheckCircle className="sucesso" />
-                    <MdError className="erro"/>
-                  </div>                  
-                  <small>{errConfSenha}</small>
-                </div>
-        
-                <button type="submit">
-                    <img src={IconCad} alt="cadastrar" />
-                    {/* <MdPersonAddAlt /> */}
-                    Enviar
-                </button>
-            </form>
-        </div>
+                        <div className={valCel} id="valCelular">
+                            <label for="celular">nº celular</label>
+                            <div className="divInput">
+                                <input
+                                    type="text"
+                                    id="celular"
+                                    placeholder="Insira o nº do celular" 
+                                    onChange={v => setCli_cel(v.target.value)} 
+                                    value={cli_cel}
+                                />
+                                <MdCheckCircle className="sucesso" />
+                                <MdError className="erro"/>
+                            </div>                  
+                            <small>{errCel}</small>
+                        </div>
+                    </div>
+
+                    <div className={valSenha} id="validaSn1">
+                    <label for="password">Senha</label>
+                    <div className="divInput">
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Digite sua senha..." 
+                            onChange={v => setUsu_senha(v.target.value)} 
+                            value={usu_senha}
+                        />
+                        <MdCheckCircle className="sucesso" />
+                        <MdError className="erro"/>
+                    </div>                  
+                    <small>{errSenha}</small>
+                    </div>
+            
+                    <div className={valConfSenha} id="validaSn2">
+                    <label for="password-confirmation">Confirmação de senha</label>
+                    <div className="divInput">
+                        <input
+                            type="password"
+                            id="password-confirmation"
+                            placeholder="Digite sua senha novamente..." 
+                            onChange={v => setConfSenha(v.target.value)} 
+                            value={confSenha}
+                        />
+                        <MdCheckCircle className="sucesso" />
+                        <MdError className="erro"/>
+                    </div>                  
+                    <small>{errConfSenha}</small>
+                    </div>
+            
+                    <button type="submit">
+                        <img src={IconCad} alt="cadastrar" />
+                        {/* <MdPersonAddAlt /> */}
+                        Enviar
+                    </button>
+                </form>
+            </div>
+
+            <Rodape />
+        </>        
     );
 }
 
