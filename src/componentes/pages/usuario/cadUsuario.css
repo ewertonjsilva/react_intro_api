@@ -64,8 +64,14 @@
   }
 
   .form-control small {
-    visibility: hidden; 
-    color: #e74c3c;
+    /* visibility: hidden;  */
+    display: none;
+    color: #e74c3c; 
+    font-size: 1.6rem;
+  }
+
+  .form-control label {
+    font-size: 1.6rem;
   }
   
   .form button {
@@ -115,6 +121,11 @@
     outline: 0; 
 } 
 
+.divInput input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0; 
+}
+
 #valEstado {
   width: 60%; 
   margin-right: 1rem;
@@ -133,29 +144,30 @@
   .form-control.success input {
     border-color: #2ecc71;
   }
-  
+
   .form-control.error input {
     border-color: #e74c3c;
   }
-  
+
   .form-control.success .divInput .sucesso {
     /* visibility: visible; */
     display: block;
   }
-  
+
   .form-control.error .divInput .erro {
     display: block;
     /* visibility: visible; */
   }
-  
+
   .form-control.error small {
-    visibility: visible;
+    /* visibility: visible; */
+    display: block;
   }
 
   .form-control.errsuccessor .divInput select {     
     border-color: #2ecc71; 
-} 
+  } 
 
-.form-control.error .divInput select {     
-  border-color: #e74c3c; 
-} 
+  .form-control.error .divInput select {     
+    border-color: #e74c3c; 
+  } 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MdCheckCircle, MdError, MdPersonAddAlt } from "react-icons/md";
+import { MdCheckCircle, MdError } from "react-icons/md";
 
 import IconCad from '../../../imagens/icones/cadastrar.svg';
 
@@ -7,28 +7,174 @@ import './cadUsuario.css';
 
 function CadUsuario() { 
 
+    // info
     const [usu_nome, setUsu_nome] = useState(''); 
     const [usu_email, setUsu_email] = useState(''); 
-    const [cid_id, setCid_id] = useState(0); 
+    const [cid_id, setCid_id] = useState('0'); 
     const [end_logradouro, setEnd_logradouro] = useState(''); 
     const [end_num, setEnd_Num] = useState(''); 
     const [end_bairro, setEnd_Bairro] = useState(''); 
     const [end_complemento, setEnd_Complemento] = useState(''); 
     const [cli_cel, setCli_cel] = useState(''); 
     const [usu_senha, setUsu_senha] = useState(''); 
-    const [usu_tipo, setUsu_tipo] = useState(2); // somento cliente pelo cadastrar do site
+    
+    const usu_tipo = 2;
 
     // não registra no banco
     const [uf, setUf] = useState('');
-    const [confSenha, setConfSenha] = useState('');
+    const [confSenha, setConfSenha] = useState(''); 
+
+    // validações
+    const [valNome, setValNome] = useState('form-control');
+    const [errNome, setErrNome] = useState(''); 
+    const [valEmail, setValEmail] = useState('form-control');
+    const [errEmail, setErrEmail] = useState(''); 
+    const [valUf, setValUf] = useState('form-control');
+    const [valCidade, setValCidade] = useState('form-control');
+    const [valLogradouro, setValLogradouro] = useState('form-control');
+    const [errLogradouro, setErrLogradouro] = useState(''); 
+    const [valNum, setValNum] = useState('form-control'); 
+    const [valBairro, setValBairro] = useState('form-control');
+    const [errBairro, setErrBairro] = useState(''); 
+    const [valCel, setValCel] = useState('form-control'); 
+    const [errCel, setErrCel] = useState(''); 
+    const [valSenha, setValSenha] = useState('form-control');
+    const [errSenha, setErrSenha] = useState(''); 
+    const [valConfSenha, setValConfSenha] = useState('form-control');
+    const [errConfSenha, setErrConfSenha] = useState('');
+
+    function handleSubmit(event) { 
+        valida();
+        event.preventDefault();
+    }
+
+    function valida() {
+        let validado = true;
+
+        if (usu_nome === '') {
+            setValNome('form-control error'); 
+            setErrNome('O nome do usuário é obrigatório');
+            validado = false;
+        } else if (usu_nome.length < 5) {
+            setValNome('form-control error'); 
+            setErrNome('Insira o nome completo do usuário');
+            validado = false;            
+        } else {
+            setValNome('form-control success')
+        }
+
+        if (usu_email === "") {
+            setValEmail('form-control error');
+            setErrEmail('O e-mail do usuário é obrigatório');
+            validado = false; 
+        } else if (!checkEmail(usu_email)) {
+            setValEmail('form-control error');
+            setErrEmail('Insira um e-mail válido');
+            validado = false; 
+        } else {
+            setValEmail('form-control success');
+        }
+
+        if (uf === '') {
+            setValUf('form-control error');
+            validado = false;
+        } else {
+            setValUf('form-control success');  
+        }
+
+        if (cid_id === '0') {
+            setValCidade('form-control error');
+            validado = false;
+        } else {
+            setValCidade('form-control success');  
+        }
+
+
+        if (end_logradouro === '') {
+            setValLogradouro('form-control error'); 
+            setErrLogradouro('A identifivação do endereço é obrigatória');
+            validado = false;
+        } else if (end_logradouro.length < 5) {
+            setValLogradouro('form-control error'); 
+            setErrLogradouro('Insira o endereço completo');
+            validado = false;
+        } else {
+            setValLogradouro('form-control success')
+        }
+
+        if (end_num === "") {
+            setValNum('form-control error'); 
+            validado = false;
+        } else {
+            setValNum('form-control success');            
+        }
+
+        if (end_bairro === '') {
+            setValBairro('form-control error'); 
+            setErrBairro('É necessário inserir o nome do bairro');
+            validado = false;
+        } else if (end_bairro.length < 4) {
+            setValBairro('form-control error'); 
+            setErrBairro('Insira o nome completo do bairro');
+            validado = false;
+        } else {
+            setValBairro('form-control success')
+        }
+
+        if (cli_cel === '') {
+            setValCel('form-control error'); 
+            setErrCel('O nº do celular é obrigatório');
+            validado = false;
+        } else if (cli_cel.length < 11) {
+            setValCel('form-control error'); 
+            setErrCel('O número do celular deve ter pelo menos 11 dígitos');
+            validado = false;            
+        } else {
+            setValCel('form-control success')
+        }
+
+        if (usu_senha === '') {
+            setValSenha('form-control error'); 
+            setErrSenha('O preenchimento da senha é obrigatório');
+            validado = false;
+        } else if (usu_senha.length < 3) {
+            setValSenha('form-control error'); 
+            setErrSenha('A senha deve ter pelo menos 3 caracteres');
+            validado = false;            
+        } else {
+            setValSenha('form-control success')
+        }
+
+        if (confSenha === '') {
+            setValConfSenha('form-control error'); 
+            setErrConfSenha('A confirmação da senha é obrigatória');
+            validado = false;
+        } else if (confSenha !== usu_senha) {
+            setValConfSenha('form-control error'); 
+            setErrConfSenha('A senha e a confirmação devem ser iguais');
+            validado = false;            
+        } else {
+            setValConfSenha('form-control success')
+        }        
+
+        // if (validado === 10) {
+        //     console.log("O formulário está 100% válido!");
+        // }
+    }
+
+    function checkEmail(email) {
+        return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            email
+        );
+    }
 
     return(
         <div className="container">
             <div>
                 <h2>Criar uma conta</h2>
             </div>
-            <form id="form" className="form">
-                <div className="form-control" id="valNome">
+            <form id="form" className="form" onSubmit={handleSubmit}>
+                <div className={valNome} id="valNome">
                     <label for="username">Nome de usuário</label>
                     <div className="divInput">
                         <input
@@ -39,12 +185,12 @@ function CadUsuario() {
                             value={usu_nome}
                         />
                         <MdCheckCircle className="sucesso" />
-                        <MdError className="erro"/>
+                        <MdError className="erro" />
                     </div>                    
-                    <small id="nome">Insira o nome completo do usuário</small>
+                    <small id="nome">{errNome}</small>
                 </div>
         
-                <div className="form-control" id="valEmail">
+                <div className={valEmail} id="valEmail">
                   <label for="email">Email</label>
                   <div className="divInput">
                     <input 
@@ -57,18 +203,18 @@ function CadUsuario() {
                     <MdCheckCircle className="sucesso" />
                     <MdError className="erro"/>
                   </div>                  
-                  <small>Insira o e-mail corretamente!</small>
+                  <small>{errEmail}</small>
                 </div>
         
                 <div className="doisItens">
-                    <div className="form-control" id="valEstado">
+                    <div className={valUf} id="valEstado">
                         <label for="estado">Estado</label>
                         <div className="divInput">
-                            <select name="selUf" id="estado">
-                                <option selected disabled onChange={e => setUf(e.target.value)} value={uf} >Sel. estado</option>
-                                <option value="1">SP</option>
-                                <option value="2">RJ</option>
-                                <option value="3">PR</option>
+                            <select name="selUf" id="estado" onChange={e => setUf(e.target.value)} value={uf}>
+                                <option selected disabled value="">Sel. estado</option>
+                                <option value="SP">SP</option>
+                                <option value="RJ">RJ</option>
+                                <option value="PR">PR</option>
                             </select>
                             <MdCheckCircle className="sucesso" />
                             <MdError className="erro"/>
@@ -76,11 +222,11 @@ function CadUsuario() {
                         <small>Campo obrigatório!</small>
                       </div>
 
-                      <div className="form-control" id="valCidade">
+                      <div className={valCidade} id="valCidade">
                         <label for="cidade">Cidade</label>
                         <div className="divInput">
-                            <select name="selCidade" id="cidade">
-                                <option selected disabled value="0">Selecione a cidade</option>
+                            <select name="selCidade" id="cidade" onChange={e => setCid_id(e.target.value)} value={cid_id}>
+                                <option selected disabled value="0" >Selecione a cidade</option>
                                 <option value="1">Tupã</option>
                                 <option value="2">Parapuã</option>
                                 <option value="3">Marília</option>
@@ -92,28 +238,32 @@ function CadUsuario() {
                       </div>
                 </div>
 
-                <div className="form-control" id="valLog">
+                <div className={valLogradouro} id="valLog">
                     <label for="logradouro">Logradouro</label>
                     <div className="divInput">
                         <input
                             type="text"
                             id="logradouro"
-                            placeholder="Digite o endereço..."
+                            placeholder="Digite o endereço..." 
+                            onChange={v => setEnd_logradouro(v.target.value)} 
+                            value={end_logradouro}
                         />
                         <MdCheckCircle className="sucesso" />
                         <MdError className="erro"/>
                     </div>                    
-                    <small>Insira os dados referente ao endereço</small>
+                    <small>{errLogradouro}</small>
                 </div>
 
                 <div className="doisItens">
-                    <div className="form-control" id="valNum">
+                    <div className={valNum} id="valNum">
                         <label for="num">Número</label>
                         <div className="divInput">
                             <input
                                 type="text"
                                 id="num"
-                                placeholder="nº do endereço"
+                                placeholder="nº do endereço" 
+                                onChange={v => setEnd_Num(v.target.value)} 
+                                value={end_num}
                             />
                             <MdCheckCircle className="sucesso" />
                             <MdError className="erro"/>
@@ -121,18 +271,20 @@ function CadUsuario() {
                         <small>Campo obrigatório!</small>
                       </div>
 
-                      <div className="form-control" id="valBairro">
+                      <div className={valBairro} id="valBairro">
                         <label for="bairro">Bairro</label>
                         <div className="divInput">
                             <input
                                 type="text"
                                 id="bairro"
-                                placeholder="Insira o nome do bairro"
+                                placeholder="Insira o nome do bairro" 
+                                onChange={v => setEnd_Bairro(v.target.value)} 
+                                value={end_bairro}
                             />
                             <MdCheckCircle className="sucesso" />
                             <MdError className="erro"/>
                         </div>                  
-                        <small>Selecione a cidade!</small>
+                        <small>{errBairro}</small>
                       </div>
                 </div>
 
@@ -143,7 +295,9 @@ function CadUsuario() {
                             <input
                                 type="text"
                                 id="comp"
-                                placeholder="Complemento do endereço"
+                                placeholder="Complemento do endereço" 
+                                onChange={v => setEnd_Complemento(v.target.value)} 
+                                value={end_complemento}
                             />
                             <MdCheckCircle className="sucesso" />
                             <MdError className="erro"/>
@@ -151,47 +305,53 @@ function CadUsuario() {
                         <small>-</small>
                       </div>
 
-                      <div className="form-control" id="valCelular">
+                      <div className={valCel} id="valCelular">
                         <label for="celular">nº celular</label>
                         <div className="divInput">
                             <input
                                 type="text"
                                 id="celular"
-                                placeholder="Insira o nº do celular"
+                                placeholder="Insira o nº do celular" 
+                                onChange={v => setCli_cel(v.target.value)} 
+                                value={cli_cel}
                             />
                             <MdCheckCircle className="sucesso" />
                             <MdError className="erro"/>
                         </div>                  
-                        <small>O nº do celular é obrigatório</small>
+                        <small>{errCel}</small>
                       </div>
                 </div>
 
-                <div className="form-control" id="validaSn1">
+                <div className={valSenha} id="validaSn1">
                   <label for="password">Senha</label>
                   <div className="divInput">
                     <input
                         type="password"
                         id="password"
-                        placeholder="Digite sua senha..."
+                        placeholder="Digite sua senha..." 
+                        onChange={v => setUsu_senha(v.target.value)} 
+                        value={usu_senha}
                     />
                     <MdCheckCircle className="sucesso" />
                     <MdError className="erro"/>
                   </div>                  
-                  <small>A senha precisa ter no mínimo 7 caracteres.</small>
+                  <small>{errSenha}</small>
                 </div>
         
-                <div className="form-control" id="validaSn2">
+                <div className={valConfSenha} id="validaSn2">
                   <label for="password-confirmation">Confirmação de senha</label>
                   <div className="divInput">
                     <input
                         type="password"
                         id="password-confirmation"
-                        placeholder="Digite sua senha novamente..."
+                        placeholder="Digite sua senha novamente..." 
+                        onChange={v => setConfSenha(v.target.value)} 
+                        value={confSenha}
                     />
                     <MdCheckCircle className="sucesso" />
                     <MdError className="erro"/>
                   </div>                  
-                  <small>Confirmação obrigatória, as senhas inseridas devem ser iguais!</small>
+                  <small>{errConfSenha}</small>
                 </div>
         
                 <button type="submit">
