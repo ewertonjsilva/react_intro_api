@@ -18,7 +18,7 @@ import prod9 from '../../../imagens/temp/salada.jpg';
 function Produtos() {
     return(
         <>  
-            <Cabecalho />
+            <Cabecalho pag={'produtos'} />
 
             <div className="menuPesquisa">
                 <div className="opPesquisa">

@@ -173,7 +173,7 @@ function CadUsuario() {
 
     return(
         <>
-            <Cabecalho /> 
+            <Cabecalho pag={'cadUsu'} /> 
 
             <div className="container">            
                 <div>
@@ -363,7 +363,7 @@ function CadUsuario() {
                     <button type="submit">
                         <img src={IconCad} alt="cadastrar" />
                         {/* <MdPersonAddAlt /> */}
-                        Enviar
+                        Cadastrar
                     </button>
                 </form>
             </div>

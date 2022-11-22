@@ -29,7 +29,8 @@
   .form-control .divInput {
     display: flex; 
     justify-content: center; 
-    align-items: center;
+    align-items: center; 
+    width: 100%;
   }
   
   .form-control label {
@@ -37,13 +38,14 @@
     margin-bottom: 0.5rem;
   }
   
-  .form-control input {
+  .form-control .divInput input {
     border: 2px solid #7F0000;
     display: flex;
     border-radius: 1rem;
     font-size: 1.4rem;
     width: 100%;
-    padding: 1rem;
+    padding: 1rem; 
+    max-width: none;
   }
   
   .sucesso {

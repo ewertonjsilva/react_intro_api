@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 import './cabecalho.css'; 
 
-function Cabecalho() { 
+function Cabecalho({pag}) { 
 
-    const [mobile, setMobile] = useState(false);
+    const [mobile, setMobile] = useState(false); 
 
     function ativaMenu() {
         if (mobile === false) {
@@ -14,7 +14,7 @@ function Cabecalho() {
         } else {
             setMobile(false);
         }
-    }
+    } 
 
     return(
         <header>
@@ -26,11 +26,11 @@ function Cabecalho() {
                         <label for="" id="titulo">BomBurguer</label>
                     </div>                      
                     <div className="menuGrande">
-                        <Link to='/' className="active">Home</Link>                  
-                        <Link to='/produtos'>Produtos</Link>
-                        <Link to='/cadusuarios'>Cadastrar</Link>
-                        <a href="./paginas/contato.html">Contato</a>
-                        <a href="./paginas/login.html">Login</a>
+                        <Link to='/' className={pag === 'home' ? 'active' : ''}>Home</Link>                  
+                        <Link to='/produtos' className={pag === 'produtos' ? 'active' : ''}>Produtos</Link>
+                        <Link to='/cadusuarios' className={pag === 'cadUsu' ? 'active' : ''}>Cadastrar</Link>
+                        <Link to='/contato' className={pag === 'contato' ? 'active' : ''}>Contato</Link>
+                        <Link to='/login' className={pag === 'login' ? 'active' : ''}>Login</Link>                        
                     </div>
                     <div className="menuMobile">
                         <a href="#" onClick={ativaMenu} className="icon" id="mIco">
@@ -39,11 +39,11 @@ function Cabecalho() {
                     </div>                    
                 </div>  
                 <div className={mobile === false ? "menuMobileExpandidon" : "menuMobileExpandidos"} id="mostraOpMobile">  
-                    <a href="#" className="active">Home</a>                  
-                    <a href="./paginas/produtos.html">Produtos</a>
-                    <a href="./paginas/cadUsuario.html">Cadastrar</a>
-                    <a href="./paginas/contato.html">Contato</a>
-                    <a href="./paginas/login.html">Login</a>
+                        <Link to='/' className={pag === 'home' ? 'active' : ''}>Home</Link>                  
+                        <Link to='/produtos' className={pag === 'produtos' ? 'active' : ''}>Produtos</Link>
+                        <Link to='/cadusuarios' className={pag === 'cadUsu' ? 'active' : ''}>Cadastrar</Link>
+                        <Link to='/contato' className={pag === 'contato' ? 'active' : ''}>Contato</Link>
+                        <Link to='/login' className={pag === 'login' ? 'active' : ''}>Login</Link>   
                 </div>               
             </nav>            
         </header>

@@ -25,7 +25,7 @@ import prod6 from '../../../imagens/temp/sorvete.jpg';
 function App() {
   return (
     <div className="App">
-        <Cabecalho />
+        <Cabecalho pag={'home'} />
         <Slider />
 
         <main className="principal">
