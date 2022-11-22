@@ -13,7 +13,7 @@ function Contato() {
             <div className="container">
                 <img src={construcao} alt="Página em construção" className="imgCons" />
                 <h3>Página em construção</h3> 
-                <p>Estamos trabalhando nesta página, tente novamente em breve.</p>
+                <p className="mensagemCons">Estamos trabalhando nesta página, tente novamente em breve.</p>
             </div>            
 
             <Rodape />        
