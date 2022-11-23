@@ -5,11 +5,50 @@ import { MdLogin } from "react-icons/md";
 import Cabecalho from "../../header/cabecalho"; 
 import Rodape from "../../footer/rodape"; 
 
+import api from '../../services/api'; 
+import { login as signin } from '../../services/auth';
+
 import './login.css';
 
 function Login() {
 
     let navigate = useNavigate(); 
+
+    // AJUSTANDO FUNÇÃO
+
+    // async function login(login, senha) { 
+    //     const dados = {
+    //         login, 
+    //         senha
+    //     }
+
+    //     try {
+    //         const response = await api.post('/usuarios/login', dados); 
+    //         //const objLogado = { 
+    //         setObjLogado({
+    //             "id": response.data.idLog, 
+    //             "nome": response.data.nomeLog, 
+    //             "acesso": response.data.nivelAcesso, 
+    //             tipo,
+    //             "token": 'ABCD'
+    //         });
+    //         // signin(JSON.stringify(objLogado)); // ver como passar vários valores em vídeo do dev samurai    
+    //         setId(response.data.idLog); 
+    //         setCompletar(response.data.compCad); 
+    //         setPoliticas(response.data.pol); 
+    //         setTermos(response.data.ter); 
+    //         setTela(2); // direcionar de acordo com a situação
+    //     } catch (error) { 
+    //         if (error.response) {
+    //             alert(error.response.data.message);
+    //         } else {
+    //             alert(error);
+    //         }  
+    //         //setTela(0);
+    //         //setEtapaLog(0);
+    //     }        
+    // } 
+
 
     function Logar() {
         navigate('/');
