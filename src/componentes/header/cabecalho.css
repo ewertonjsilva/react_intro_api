@@ -66,6 +66,11 @@
     color: #FAFAFA;
 }
 
+.containerNav .menu .logoNome { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+} 
 
 .containerNav .menu .menuMobile a { 
     display: none; 

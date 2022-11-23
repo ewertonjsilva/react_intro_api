@@ -175,7 +175,7 @@ function CadUsuario() {
         <>
             <Cabecalho pag={'cadUsu'} /> 
 
-            <div className="container">            
+            <div className="containerCadUsu">            
                 <div>
                     <h2>Criar uma conta</h2>
                 </div>

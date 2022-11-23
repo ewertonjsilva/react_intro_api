@@ -10,7 +10,7 @@ function Contato() {
         <>
             <Cabecalho pag={'contato'} />
 
-            <div className="container">
+            <div className="containerContato">
                 <img src={construcao} alt="Página em construção" className="imgCons" />
                 <h3>Página em construção</h3> 
                 <p className="mensagemCons">Estamos trabalhando nesta página, tente novamente em breve.</p>

@@ -21,7 +21,7 @@ function Cabecalho({pag}) {
             {/* Logo e navegação     */}
             <nav className="containerNav">
                 <div className="menu">
-                    <div>
+                    <div className='logoNome'>
                         <MdFastfood className="icon" id="logo" />        
                         <label for="" id="titulo">BomBurguer</label>
                     </div>                      

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { MdLogin } from "react-icons/md";
 
@@ -8,11 +8,18 @@ import Rodape from "../../footer/rodape";
 import './login.css';
 
 function Login() {
+
+    let navigate = useNavigate(); 
+
+    function Logar() {
+        navigate('/');
+    }
+
     return(
         <>
             <Cabecalho pag={'login'} />
 
-            <div class="container">
+            <div class="containerLog">
                 <div>
                     <h2>Acessar o site</h2>
                 </div>
@@ -31,7 +38,7 @@ function Login() {
                         <Link to='/cadusuarios'>Não tenho cadastro!</Link>
                         <a href="#">Esqueci o e-mail</a>
                     </div>
-                    <button type="submit" className='botao'><MdLogin className='ico' /> Entrar</button>
+                    <button type="submit" className='botao' onClick={() => Logar()}><MdLogin className='ico' /> Entrar</button>
                 </form>
             </div>
 
