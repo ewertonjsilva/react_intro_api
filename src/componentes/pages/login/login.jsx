@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 import { Link, useNavigate } from 'react-router-dom';
 
 import { MdLogin } from "react-icons/md";
@@ -10,49 +12,46 @@ import { login as signin } from '../../services/auth';
 
 import './login.css';
 
-function Login() {
+function LoginUsu() {
 
     let navigate = useNavigate(); 
+    const [objLogado, setObjLogado] = useState({});
+    const [login, setLogin] = useState('');
+    const [senha, setSenha] = useState('');
 
     // AJUSTANDO FUNÇÃO
 
-    // async function login(login, senha) { 
-    //     const dados = {
-    //         login, 
-    //         senha
-    //     }
+    async function logar() { 
+        const dados = {
+            login, 
+            senha
+        }
 
-    //     try {
-    //         const response = await api.post('/usuarios/login', dados); 
-    //         //const objLogado = { 
-    //         setObjLogado({
-    //             "id": response.data.idLog, 
-    //             "nome": response.data.nomeLog, 
-    //             "acesso": response.data.nivelAcesso, 
-    //             tipo,
-    //             "token": 'ABCD'
-    //         });
-    //         // signin(JSON.stringify(objLogado)); // ver como passar vários valores em vídeo do dev samurai    
-    //         setId(response.data.idLog); 
-    //         setCompletar(response.data.compCad); 
-    //         setPoliticas(response.data.pol); 
-    //         setTermos(response.data.ter); 
-    //         setTela(2); // direcionar de acordo com a situação
-    //     } catch (error) { 
-    //         if (error.response) {
-    //             alert(error.response.data.message);
-    //         } else {
-    //             alert(error);
-    //         }  
-    //         //setTela(0);
-    //         //setEtapaLog(0);
-    //     }        
-    // } 
-
-
-    function Logar() {
-        navigate('/');
-    }
+        try {
+            const response = await api.post('/usuarios/login', dados); 
+            //const objLogado = { 
+            setObjLogado({
+                "id": response.data.id, 
+                "nome": response.data.nome, 
+                "acesso": response.data.tipo 
+            });   
+            alert(response.data);
+            if (response.data.confirma == true) {
+                signin(JSON.stringify(objLogado));
+                // window.location.reload(true); 
+                navigate('/'); // direcionar de acordo com a situação
+            } else {
+                alert('Erro: ' + response.data.message)
+            }
+            
+        } catch (error) { 
+            if (error.response) {
+                alert(error.response.data.message);
+            } else {
+                alert(error);
+            }  
+        }        
+    } 
 
     return(
         <>
@@ -66,18 +65,22 @@ function Login() {
                     <input
                         type="password"
                         id="password"
-                        placeholder="E-mail"
+                        placeholder="E-mail" 
+                        onChange={v => setLogin(v.target.value)} 
+                        value={login}                        
                     />     
                     <input
                         type="password"
                         id="password"
-                        placeholder="Senha"
+                        placeholder="Senha" 
+                        onChange={v => setSenha(v.target.value)} 
+                        value={senha}
                     />           
                     <div class="info">
                         <Link to='/cadusuarios'>Não tenho cadastro!</Link>
                         <a href="#">Esqueci o e-mail</a>
                     </div>
-                    <button type="submit" className='botao' onClick={() => Logar()}><MdLogin className='ico' /> Entrar</button>
+                    <button type="submit" className='botao' onClick={() => logar()}><MdLogin className='ico' /> Entrar</button>
                 </form>
             </div>
 
@@ -86,4 +89,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoginUsu;
