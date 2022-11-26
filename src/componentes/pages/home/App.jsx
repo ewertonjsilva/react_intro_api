@@ -2,6 +2,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 import { MdLunchDining, MdLocalBar, MdDining, MdIcecream, MdFastfood } from "react-icons/md";
 
+import { isLogged, tipo } from '../../services/auth';
 import Cabecalho from "../../header/cabecalho";
 import Rodape from '../../footer/rodape'; 
 

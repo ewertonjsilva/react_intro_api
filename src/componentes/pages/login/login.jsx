@@ -8,7 +8,7 @@ import Cabecalho from "../../header/cabecalho";
 import Rodape from "../../footer/rodape"; 
 
 import api from '../../services/api'; 
-import { login as signin } from '../../services/auth';
+import { login as signin, isLogged, tipo } from '../../services/auth';
 
 import './login.css';
 
@@ -19,24 +19,29 @@ function LoginUsu() {
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
 
+
+    function handleSubmit(event) { 
+        logar();
+        event.preventDefault();
+    }
+
     // AJUSTANDO FUNÇÃO
 
-    async function logar() { 
-        const dados = {
-            login, 
-            senha
-        }
+    async function logar(event) {         
 
         try {
+            const dados = {
+                login, 
+                senha
+            }
             const response = await api.post('/usuarios/login', dados); 
-            //const objLogado = { 
-            setObjLogado({
-                "id": response.data.id, 
-                "nome": response.data.nome, 
-                "acesso": response.data.tipo 
-            });   
-            alert(response.data);
+
             if (response.data.confirma == true) {
+                setObjLogado({
+                    "id": response.data.id, 
+                    "nome": response.data.nome, 
+                    "acesso": response.data.tipo 
+                });
                 signin(JSON.stringify(objLogado));
                 // window.location.reload(true); 
                 navigate('/'); // direcionar de acordo com a situação
@@ -50,8 +55,16 @@ function LoginUsu() {
             } else {
                 alert(error);
             }  
-        }        
+        }               
     } 
+
+    useEffect(() => {
+        const logado = isLogged;  
+        console.log(logado);  
+        if (logado) {
+            navigate('/');
+        }
+      }, []);  
 
     return(
         <>
@@ -61,10 +74,10 @@ function LoginUsu() {
                 <div>
                     <h2>Acessar o site</h2>
                 </div>
-                <form id="form" class="form">      
+                <form id="form" class="form" onSubmit={handleSubmit}>      
                     <input
-                        type="password"
-                        id="password"
+                        type="text"
+                        id="email"
                         placeholder="E-mail" 
                         onChange={v => setLogin(v.target.value)} 
                         value={login}                        
@@ -80,7 +93,7 @@ function LoginUsu() {
                         <Link to='/cadusuarios'>Não tenho cadastro!</Link>
                         <a href="#">Esqueci o e-mail</a>
                     </div>
-                    <button type="submit" className='botao' onClick={() => logar()}><MdLogin className='ico' /> Entrar</button>
+                    <button type="submit" className='botao'><MdLogin className='ico' /> Entrar</button>
                 </form>
             </div>
 

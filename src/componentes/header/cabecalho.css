@@ -120,7 +120,19 @@
     cursor: pointer;
 } 
 
-
+.menuSair {
+    display: flex; 
+    border: 0.4rem solid #FAFAFA;     
+    background-color: #FAFAFA;
+    color: #B71C1C;
+    text-decoration: none;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;     
+    font-size: 1.6rem; 
+    font-weight: bold;
+    cursor: pointer;    
+}
 
 @media screen and (max-width: 940px) {
     .containerNav {
