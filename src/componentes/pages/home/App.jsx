@@ -1,10 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
 import { MdLunchDining, MdLocalBar, MdDining, MdIcecream, MdFastfood } from "react-icons/md";
 
-import { isLogged, tipo } from '../../services/auth';
 import Cabecalho from "../../header/cabecalho";
 import Rodape from '../../footer/rodape'; 
+import api from '../../services/api'; 
 
 import './App.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -24,6 +25,21 @@ import prod5 from '../../../imagens/temp/suco-laranja.jpg';
 import prod6 from '../../../imagens/temp/sorvete.jpg';
 
 function App() {
+
+    const [produtos, setProdutos] = useState([]);
+
+    async function listaProdutos() {
+        try {
+            const response = await api.get('/produtoshome'); 
+            setProdutos(response.data.message); 
+        } catch (error) {
+            alert(error);
+        }                
+    }
+
+    useEffect(() => {        
+        listaProdutos();        
+    }, []);     
   return (
     <div className="App">
         <Cabecalho pag={'home'} />
