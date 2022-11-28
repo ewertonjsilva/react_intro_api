@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -8,21 +8,20 @@ import Cabecalho from "../../header/cabecalho";
 import Rodape from "../../footer/rodape"; 
 
 import api from '../../services/api'; 
-import { login as signin, isLogged, tipo } from '../../services/auth';
 
 import './login.css';
 
 function LoginUsu() {
 
     let navigate = useNavigate(); 
-    const [objLogado, setObjLogado] = useState({});
+    // const [objLogado, setObjLogado] = useState({});
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
 
 
     function handleSubmit(event) { 
-        logar();
         event.preventDefault();
+        logar();        
     }
 
     // AJUSTANDO FUNÇÃO
@@ -37,14 +36,23 @@ function LoginUsu() {
             const response = await api.post('/usuarios/login', dados); 
 
             if (response.data.confirma == true) {
-                setObjLogado({
+                const objLogado = {
                     "id": response.data.id, 
                     "nome": response.data.nome, 
                     "acesso": response.data.tipo 
-                });
-                signin(JSON.stringify(objLogado));
+                };
+                // signin(JSON.stringify(objLogado));                
+                localStorage.clear();
+                localStorage.setItem('user', JSON.stringify(objLogado));
                 // window.location.reload(true); 
                 navigate('/'); // direcionar de acordo com a situação
+
+                /*
+                    https://www.freecodecamp.org/portuguese/news/como-persistir-um-usuario-conectado-com-react/
+                    RECUPERAR INFO USUÁRIO LOGADO
+                    const user = JSON.parse(localStorage.getItem('user'));
+                    alert(user.id);
+                */
             } else {
                 alert('Erro: ' + response.data.message)
             }
@@ -56,15 +64,7 @@ function LoginUsu() {
                 alert(error);
             }  
         }               
-    } 
-
-    useEffect(() => {
-        const logado = isLogged;  
-        console.log(logado);  
-        if (logado) {
-            navigate('/');
-        }
-      }, []);  
+    }  
 
     return(
         <>

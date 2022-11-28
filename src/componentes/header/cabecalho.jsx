@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdFastfood, MdMenu } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
-
-import { logout, isLogged, tipo } from '../services/auth';
 
 import './cabecalho.css'; 
 
 function Cabecalho({pag}) { 
 
     const [mobile, setMobile] = useState(false); 
-    let navigate = useNavigate(); 
+    let navigate = useNavigate();
+    const [logado, setLogado] = useState(false);
 
     function ativaMenu() {
         if (mobile === false) {
@@ -20,9 +19,17 @@ function Cabecalho({pag}) {
     } 
 
     function sair() {
-        logout(); 
+        localStorage.clear(); 
+        window.location.reload(true);
         navigate('/');
     }
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            setLogado(true);
+        }
+      }, []);     
 
     return(
         <header>
@@ -37,9 +44,11 @@ function Cabecalho({pag}) {
                         <Link to='/' className={pag === 'home' ? 'active' : ''}>Home</Link>                  
                         <Link to='/produtos' className={pag === 'produtos' ? 'active' : ''}>Produtos</Link>
                         <Link to='/cadusuarios' className={pag === 'cadUsu' ? 'active' : ''}>Cadastrar</Link>
-                        <Link to='/contato' className={pag === 'contato' ? 'active' : ''}>Contato</Link>
-                        <Link to='/login' className={pag === 'login' ? 'active' : ''}>Login</Link>  
-                        <span className='menuSair' onClick={() => sair()}>Sair</span>                      
+                        <Link to='/contato' className={pag === 'contato' ? 'active' : ''}>Contato</Link> 
+                        {
+                            logado ? <span className='menuSair' onClick={() => sair()}>Sair</span> : <Link to='/login' className={pag === 'login' ? 'active' : ''}>Login</Link>
+                        }
+                                                
                     </div>
                     <div className="menuMobile">
                         <a href="#" onClick={ativaMenu} className="icon" id="mIco">
@@ -52,8 +61,9 @@ function Cabecalho({pag}) {
                         <Link to='/produtos' className={pag === 'produtos' ? 'active' : ''}>Produtos</Link>
                         <Link to='/cadusuarios' className={pag === 'cadUsu' ? 'active' : ''}>Cadastrar</Link>
                         <Link to='/contato' className={pag === 'contato' ? 'active' : ''}>Contato</Link>
-                        <Link to='/login' className={pag === 'login' ? 'active' : ''}>Login</Link>   
-                        <span className='menuSair' onClick={() => sair()}>Sair</span>
+                        {
+                            logado ? <span className='menuSair' onClick={() => sair()}>Sair</span> : <Link to='/login' className={pag === 'login' ? 'active' : ''}>Login</Link>
+                        }
                 </div>               
             </nav>            
         </header>
