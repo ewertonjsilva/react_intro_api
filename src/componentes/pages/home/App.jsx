@@ -5,6 +5,7 @@ import { MdLunchDining, MdLocalBar, MdDining, MdIcecream, MdFastfood } from "rea
 
 import Cabecalho from "../../header/cabecalho";
 import Rodape from '../../footer/rodape'; 
+import CardProd from '../produtos/cardproduto';
 import api from '../../services/api'; 
 
 import './App.css';
@@ -63,37 +64,11 @@ function App() {
         </div>
 
         <div className="produtos">
-            {/* <!-- Alguns produtos --> */}
-            <div className="cardProd">
-                <img src={prod1} alt="" />
-                <span className="descricao">Lanche</span>
-                <span>R$ 0,00</span>
-            </div>
-            <div className="cardProd">
-                <img src={prod2} alt="" />
-                <span className="descricao">Lanche</span>
-                <span>R$ 0,00</span>
-            </div>
-            <div className="cardProd">
-                <img src={prod3} alt="" />
-                <span className="descricao">Lanche</span>
-                <span>R$ 0,00</span>
-            </div>
-            <div className="cardProd">
-                <img src={prod4} alt="" />
-                <span className="descricao">Lanche</span>
-                <span>R$ 0,00</span>
-            </div>
-            <div className="cardProd">
-                <img src={prod5} alt="" />
-                <span className="descricao">Lanche</span>
-                <span>R$ 0,00</span>
-            </div>
-            <div className="cardProd">
-                <img src={prod6} alt="" />
-                <span className="descricao">Lanche</span>
-                <span>R$ 0,00</span>
-            </div>
+            {
+                produtos.map(prd => {
+                    return <CardProd prd={prd} />
+                })
+            } 
         </div>
 
         <Rodape />

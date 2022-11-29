@@ -89,3 +89,36 @@
     margin: 0 1rem;
 }
 
+
+.produtos .cardProd {
+    width: 30%; 
+    height: 25rem;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    border: 0.4rem solid #B71C1C; 
+    border-radius: 2rem; 
+    overflow: hidden; 
+    background-color: #B71C1C; 
+    margin: 1rem 1rem; 
+    cursor: pointer;
+  }
+  
+  .produtos .cardProd img {
+    width: 100%; 
+    height: 80%;
+  } 
+  
+  .produtos .cardProd span {
+    background-color: #FAFAFA; 
+    width: 100%; 
+    text-align: center;
+    font-size: 1.6rem; 
+    padding: 0.5rem;
+  } 
+  
+  .produtos .cardProd .descricao {
+    font-weight: bold;
+  }
+
