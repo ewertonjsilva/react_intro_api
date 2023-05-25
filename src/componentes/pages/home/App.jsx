@@ -27,7 +27,19 @@ import prod6 from '../../../imagens/temp/sorvete.jpg';
 
 function App() {
 
-    const [produtos, setProdutos] = useState([]);
+    const [produtos, setProdutos] = useState([]); 
+
+    // produtos
+  const [produtosOff, setProdutosOff] = useState(
+    [
+      {prd_id: 1, prd_nome: 'Hamburguer de Bacon', prd_img: prod1, prd_valor: 'R$ 21,00', descricao: 'Lanche maravilhoso'}, 
+      {prd_id: 2, prd_nome: 'Combo hamburguer e batata', prd_img: prod2, prd_valor: 'R$ 33,00', descricao: 'Muito delicioso'}, 
+      {prd_id: 3, prd_nome: 'Lanche básico', prd_img: prod3, prd_valor: 'R$ 16,00', descricao: 'Para quem come pouco'}, 
+      {prd_id: 4, prd_nome: 'Suco de laranja', prd_img: prod5, prd_valor: 'R$ 8,25', descricao: 'Refrescante'}, 
+      {prd_id: 5, prd_nome: 'Suco verde', prd_img: prod4, prd_valor: 'R$ 12,00', descricao: 'Verdrescante'}, 
+      {prd_id: 6, prd_nome: 'Sorvete', prd_img: prod6, prd_valor: 'R$ 13,00', descricao: 'Um sorvete aleatório'} 
+    ]
+  );
 
     async function listaProdutos() {
         try {
@@ -35,6 +47,7 @@ function App() {
             setProdutos(response.data.message); 
         } catch (error) {
             alert(error);
+            setProdutos(produtosOff);
         }                
     }
 
